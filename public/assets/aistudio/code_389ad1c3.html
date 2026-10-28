@@ -1,0 +1,1122 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>James Iron &amp; Steel, Inc. | Architectural Metalwork &amp; Structural Steel Since 1952</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              charcoal: '#0B0C0E',
+              dark: '#121418',
+              surface: '#191C22',
+              card: '#22262F',
+              accent: '#C5A059',
+              accentHover: '#D4AF37',
+              accentLight: '#F3E8CE',
+              stone: '#F8F7F4',
+              sand: '#EFECE6',
+              border: '#2E3440',
+              muted: '#8D929A'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            display: ['Oswald', 'Montserrat', 'sans-serif']
+          },
+          letterSpacing: {
+            tighter: '-0.03em',
+            tightest: '-0.05em',
+            widestPlus: '0.22em'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Oswald (Headlines matching reference bold aesthetic) & Inter (Clean architectural body) -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Oswald:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Core Layout & Custom Styling -->
+<style data-purpose="base-layout">
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0B0C0E;
+      color: #1A1D20;
+      overflow-x: hidden;
+    }
+    .font-heading {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    .badge-heading {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+  </style>
+<!-- Interactive and Utility Styling -->
+<style data-purpose="custom-utilities">
+    .glow-gold {
+      box-shadow: 0 0 25px rgba(197, 160, 89, 0.25);
+    }
+    .aspect-reel {
+      aspect-ratio: 9 / 16;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Motion & Animation Styling */
+    .shimmer-button {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: rotate(25deg);
+      transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .shimmer-button:hover::after {
+      left: 180%;
+    }
+
+    /* Scroll Reveal Baseline */
+    .reveal-elem {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+    .reveal-elem.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger helpers */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+
+    /* Hero Background Zoom In on Load */
+    .hero-bg-anim {
+      transform: scale(1.08);
+      transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s ease-out;
+      will-change: transform;
+    }
+    .hero-bg-loaded .hero-bg-anim {
+      transform: scale(1);
+    }
+
+    /* Hero Stagger Elements */
+    .hero-fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+    .hero-bg-loaded .hero-fade-up {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Interactive Card Micro-Interactions */
+    .service-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px -10px rgba(11, 12, 14, 0.12), 0 0 15px rgba(197, 160, 89, 0.15);
+      border-color: rgba(197, 160, 89, 0.45);
+    }
+
+    .gallery-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -10px rgba(11, 12, 14, 0.2);
+    }
+
+    .benefit-card {
+      transition: transform 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+    }
+    .benefit-card:hover {
+      transform: translateX(4px);
+      border-color: rgba(197, 160, 89, 0.5);
+      background-color: #1e222a;
+    }
+
+    /* Fallback / Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-elem, .hero-fade-up {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .hero-bg-anim {
+        transform: none !important;
+        transition: none !important;
+      }
+      #preloader {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-brand-charcoal text-slate-100 antialiased selection:bg-brand-accent selection:text-brand-charcoal">
+<!-- BEGIN: Cinematic Preloader Intro -->
+<div class="fixed inset-0 z-[100] bg-[#07080A] flex flex-col items-center justify-center transition-all duration-700 pointer-events-none" id="preloader" style="opacity: 0; display: none;">
+<div class="flex flex-col items-center max-w-xs text-center px-4">
+<!-- Monogram Emblem with Gold Glow -->
+<div class="w-16 h-16 bg-gradient-to-br from-brand-accent to-[#8E7036] rounded border border-brand-accent/40 flex items-center justify-center shadow-2xl mb-4 transform scale-95 animate-pulse">
+<span class="font-heading font-bold text-2xl text-brand-charcoal tracking-tighter">JIS</span>
+</div>
+<span class="font-heading text-lg text-white font-bold tracking-widest block uppercase mb-1">JAMES IRON &amp; STEEL</span>
+<span class="text-[10px] text-brand-accent uppercase tracking-widest font-mono mb-6">EST. 1952 • MONROE, NC</span>
+<!-- Subtle Loading Progress Indicator -->
+<div class="w-36 h-0.5 bg-neutral-800 rounded-full overflow-hidden">
+<div class="h-full bg-brand-accent w-full origin-left transition-transform duration-1000 ease-out" id="preloader-progress" style="transform: scaleX(1);"></div>
+</div>
+</div>
+</div>
+<!-- END: Cinematic Preloader Intro -->
+<!-- BEGIN: UtilityAnnouncementBar -->
+
+<!-- END: UtilityAnnouncementBar -->
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-brand-charcoal/80 backdrop-blur-md border-b border-brand-border/60 transition-all duration-300" id="main-header"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <!-- Left Nav Links -->
+  <nav class="flex-1 hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-widest text-slate-200">
+    <a href="#why-us" class="hover:text-brand-accent transition-colors duration-200">About</a>
+    <a href="#services" class="hover:text-brand-accent transition-colors duration-200 flex items-center gap-1.5 group">
+      Services
+      <svg class="w-3 h-3 text-slate-400 group-hover:text-brand-accent transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </a>
+    <a href="#projects" class="hover:text-brand-accent transition-colors duration-200">Projects</a>
+  </nav>
+
+  <!-- Mobile Menu Button (Left on small screens) -->
+  <div class="flex md:hidden items-center">
+    <a href="#why-us" class="text-xs font-semibold uppercase tracking-widest text-slate-300 hover:text-brand-accent">
+      Menu
+    </a>
+  </div>
+
+  <!-- Center Circular Monogram Emblem -->
+  <div class="flex-shrink-0 flex items-center justify-center px-4">
+    <a href="#" class="group flex flex-col items-center justify-center">
+      <div class="w-12 h-12 rounded-full border-2 border-brand-accent/70 bg-brand-surface/90 flex items-center justify-center shadow-lg group-hover:border-brand-accent group-hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+        <span class="font-heading font-bold text-lg text-white group-hover:text-brand-accent tracking-tighter transition-colors duration-200">JIS</span>
+      </div>
+      <span class="font-heading text-[10px] text-slate-300 tracking-widest uppercase mt-1 hidden sm:block group-hover:text-brand-accent transition-colors duration-200">James Iron &amp; Steel</span>
+    </a>
+  </div>
+
+  <!-- Right Nav Links & Actions -->
+  <div class="flex-1 flex items-center justify-end space-x-6">
+    <nav class="hidden lg:flex items-center space-x-7 text-xs font-semibold uppercase tracking-widest text-slate-200 mr-2">
+      <a href="#reviews" class="hover:text-brand-accent transition-colors duration-200">Reviews</a>
+      <a href="#estimate-form" class="hover:text-brand-accent transition-colors duration-200">Contact</a>
+      <a href="tel:7043098507" class="hover:text-brand-accent transition-colors duration-200 flex items-center gap-1.5 text-slate-300">
+        </a></nav></div></div></header>
+<!-- END: MainHeader -->
+<main>
+<!-- BEGIN: HeroSection -->
+<section class="relative min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between bg-brand-charcoal overflow-hidden pt-12 pb-16 hero-bg-loaded" id="hero-section"><!-- Architectural Hero Visual Backdrop with Image -->
+<div class="absolute inset-0 z-0 overflow-hidden">
+  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfIvtdV7C7jJwKT_utWOepkUAWZwHLzEeyqQOplMBhzaF0nidLJln4MrKwSA-yVMVH03slKUiNljrrK7_cUSnT7YgZ5TeKrNBkkcLpEJCd2galHkrwroMXkta5o9MfuRTmaAfTORjFRcm-35vcqe3KqGlzs7TFMfgGB-r2uvmpTbtRgCddvjF12K4SNyehV3mwlOWkLU8csqONfC9G533EWH92I9b11Yb-ZsLucw" alt="James Iron &amp; Steel Craftsmanship Workshop" class="hero-bg-anim w-full h-full object-cover object-center">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-transparent to-black/30"></div>
+</div>
+
+<div class="relative z-10 max-w-5xl mx-auto px-4 text-center my-auto flex flex-col items-center pt-8">
+  <!-- Hugo Builders Inspired Centered Emblem & Wordmark -->
+  <div class="hero-fade-up flex flex-col items-center" style="transition-delay: 200ms;">
+    <div class="w-20 h-20 rounded-full border-2 border-brand-accent/60 bg-brand-surface/90 backdrop-blur-md flex items-center justify-center p-3 shadow-2xl mb-4 transform hover:scale-105 transition-transform duration-300">
+      <svg class="w-10 h-10 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+      </svg>
+    </div>
+    <h1 class="font-heading text-3xl sm:text-5xl md:text-6xl text-white font-bold tracking-widest uppercase mb-1 drop-shadow-md">
+      JAMES IRON &amp; STEEL
+    </h1>
+    <p class="badge-heading text-xs sm:text-sm text-brand-accent tracking-[0.3em] uppercase drop-shadow">
+      EST. 1952 · MONROE, NC
+    </p>
+  </div>
+
+  <!-- Centered Translucent Pill Button Matching Reference -->
+  <div class="hero-fade-up mt-8" style="transition-delay: 400ms;">
+    <a href="#estimate-form" class="inline-block px-8 py-3.5 rounded-full border border-white/60 bg-white/10 backdrop-blur-md text-white font-medium tracking-wider text-xs uppercase hover:bg-white hover:text-black transition shadow-lg">
+      GET A FREE ESTIMATE
+    </a>
+  </div>
+
+  <!-- Centered Scroll Indicator Matching Reference -->
+  <div class="hero-fade-up mt-10 flex flex-col items-center text-slate-300 text-xs uppercase tracking-widest" style="transition-delay: 600ms;">
+    <span class="mb-1 text-[10px] tracking-widest">SCROLL</span>
+    <svg class="w-4 h-4 animate-bounce text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+    </svg>
+  </div>
+</div>
+
+<!-- Trust Bar Strip -->
+<div class="hero-fade-up relative z-10 w-full max-w-6xl mx-auto px-4 mt-6" style="transition-delay: 750ms;">
+  <div class="bg-white rounded-lg shadow-xl p-4 sm:p-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-brand-charcoal divide-y md:divide-y-0 md:divide-x divide-slate-200">
+    <div class="flex items-center space-x-3 px-2 group cursor-default">
+      <span class="text-brand-accent transform group-hover:scale-110 transition-transform duration-200">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      </span>
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">EXPERIENCE</p>
+        <p class="font-heading text-sm sm:text-base font-bold text-brand-charcoal">70+ YEARS IN BUSINESS</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 px-2 pt-3 md:pt-0 group cursor-default">
+      <span class="text-brand-accent transform group-hover:scale-110 transition-transform duration-200">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      </span>
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">COVERAGE</p>
+        <p class="font-heading text-sm sm:text-base font-bold text-brand-charcoal">NC &amp; SC CAROLINAS</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 px-2 pt-3 md:pt-0 group cursor-default">
+      <span class="text-brand-accent transform group-hover:scale-110 transition-transform duration-200">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      </span>
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">PROTECTION</p>
+        <p class="font-heading text-sm sm:text-base font-bold text-brand-charcoal">1-YR WORKMANSHIP WARRANTY</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 px-2 pt-3 md:pt-0 group cursor-default">
+      <span class="text-brand-accent transform group-hover:scale-110 transition-transform duration-200">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+      </span>
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">FREE ESTIMATES</p>
+        <p class="font-heading text-sm sm:text-base font-bold text-brand-charcoal">NO-OBLIGATION QUOTES</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+<!-- END: HeroSection -->
+<!-- BEGIN: WhatWeDoServices -->
+<section class="bg-brand-stone py-24 text-brand-charcoal" data-purpose="services-section" id="services">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header matching reference typography -->
+<div class="reveal-elem text-center max-w-3xl mx-auto mb-16 revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">WHAT WE DO</p>
+<h2 class="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-brand-charcoal uppercase">
+            OUR CORE CAPABILITIES
+          </h2>
+<div class="w-16 h-1 bg-brand-accent mx-auto mt-4 mb-4"></div>
+<p class="text-slate-600 text-sm sm:text-base">
+            From precision architectural ironwork to structural steel erection, our Monroe fabrication facility delivers generational quality to residential and commercial clients.
+          </p>
+</div>
+<!-- 3-Column Service Cards (Mirroring Reference 3-card layout) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1: Commercial -->
+<article class="reveal-elem delay-100 service-card bg-white rounded-xl overflow-hidden shadow-sm flex flex-col group border border-slate-100 revealed">
+<div class="relative h-64 overflow-hidden">
+<img alt="Commercial structural steel building framework" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8MFiA-nnShk7YL2MbdT6N5JXX1pBaXOW2ICzIpqsCCcIqbieklSezpDatHF3B2OP9DfYk0UKMU9Q7ezBerlSewZFUlmrLcyXKms6br1WsRKg-gF3om2Gn7k8wzT4A8LXqoWdrPwe6R58MymBTd3_UHZ3p6mtoiYbDn0w5pC3IqeA3EHwLvw9yEJUnAo5TYYSAD99vCUwmZzfFzF35K8AWEaH7I9M1CWNNgZ_R8A">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+<span class="absolute top-4 right-4 bg-brand-charcoal/80 text-brand-accent text-[11px] font-bold tracking-wider px-3 py-1 rounded uppercase">Commercial</span>
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-heading text-2xl font-bold text-brand-charcoal uppercase mb-3">COMMERCIAL METALWORK</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-6">
+                  Certified structural steel packages, industrial stair towers, exterior egress balconies, bollards, and custom architectural features engineered to exact blueprints.
+                </p>
+<ul class="text-xs text-slate-500 space-y-2 mb-6 border-t border-slate-100 pt-4">
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Commercial Stairs &amp; ADA Railings</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Structural Beams, Columns &amp; Canopies</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Automated Security Gates &amp; Access Systems</li>
+</ul>
+</div>
+<a class="inline-flex items-center text-xs font-bold text-brand-accent hover:text-brand-charcoal uppercase tracking-wider group-hover:translate-x-1 transition duration-200" href="#estimate-form">
+                Learn More →
+              </a>
+</div>
+</article>
+<!-- Card 2: Residential -->
+<article class="reveal-elem delay-200 service-card bg-white rounded-xl overflow-hidden shadow-sm flex flex-col group border border-slate-100 revealed">
+<div class="relative h-64 overflow-hidden">
+<img alt="Luxury residential modern iron railing inside custom home" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz3-FnJoEaQG_A2eMvCF_863ydqFi1sWtF2sEk8sNqyHMvklWAZSe5IluB23jCAZ0p93kRyl8eBJ4akhXdwYoyA7RxeiR1hqwqYmD4bi6DzHmkt9gOu09an2bkxkbQyc41jrlD1ditq5P035XiBtyh7Ql57bxqfAnp7B4EnF5Jb7wCwyoSGZyFRs8SmRwBNdNoJwfodHVWXyP3LDOjRClIMYW8886Ok2CYSINW0w">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+<span class="absolute top-4 right-4 bg-brand-charcoal/80 text-brand-accent text-[11px] font-bold tracking-wider px-3 py-1 rounded uppercase">Residential</span>
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-heading text-2xl font-bold text-brand-charcoal uppercase mb-3">RESIDENTIAL METALWORK</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-6">
+                  Artisanal interior and exterior railings, floating mono-stringer staircases, wrought-iron courtyard gates, bahama shutters, and estate entry accents tailored for luxury homes.
+                </p>
+<ul class="text-xs text-slate-500 space-y-2 mb-6 border-t border-slate-100 pt-4">
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Custom Interior Handrails &amp; Cable Systems</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Driveway Gates &amp; Ornamental Fencing</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Custom Mailbox Posts &amp; Exterior Iron Details</li>
+</ul>
+</div>
+<a class="inline-flex items-center text-xs font-bold text-brand-accent hover:text-brand-charcoal uppercase tracking-wider group-hover:translate-x-1 transition duration-200" href="#estimate-form">
+                Learn More →
+              </a>
+</div>
+</article>
+<!-- Card 3: Specialty & Finishes -->
+<article class="reveal-elem delay-300 service-card bg-white rounded-xl overflow-hidden shadow-sm flex flex-col group border border-slate-100 revealed">
+<div class="relative h-64 overflow-hidden">
+<img alt="Precision metal powder coating and architectural finishing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzJhyIMpc4uaBoqYDetrZ4eIvn3-U1_wASCveCxTL0grCH_E1xNg7XRmtYjK7RUng3Fkfvc04GuaH9W1lZkgMPLz_n0ngAXtQ4G2r3DDlTHSzaHTp9b2AtnMEYLReKtTEcwfdbWSms3bSMRv9HyMWvXBog4Fk7EkCoM_c61oWDIBiCsF24MUbTuXy8sFCqSXQy64y80miBcERjmycujjnkU5iqO-uMAoHQH0kTkQ">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+<span class="absolute top-4 right-4 bg-brand-charcoal/80 text-brand-accent text-[11px] font-bold tracking-wider px-3 py-1 rounded uppercase">Finishes</span>
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-heading text-2xl font-bold text-brand-charcoal uppercase mb-3">SPECIALTY &amp; POWDER COATING</h3>
+<p class="text-slate-600 text-sm leading-relaxed mb-6">
+                  Industrial-grade powder coating facilities providing enduring defense against the Southern elements, alongside bespoke architectural bronze, stainless, and aluminum fabrication.
+                </p>
+<ul class="text-xs text-slate-500 space-y-2 mb-6 border-t border-slate-100 pt-4">
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Super-Durable Powder Coating Finishes</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Marine-Grade Aluminum &amp; Stainless Steel</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-brand-accent rounded-full mr-2"></span>Custom Architectural Restoration Work</li>
+</ul>
+</div>
+<a class="inline-flex items-center text-xs font-bold text-brand-accent hover:text-brand-charcoal uppercase tracking-wider group-hover:translate-x-1 transition duration-200" href="#estimate-form">
+                Learn More →
+              </a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- END: WhatWeDoServices -->
+<!-- BEGIN: DarkContrastFeatureBanner -->
+<!-- Direct equivalent to the "PRECISION. EVERY SHINGLE. EVERY TIME." dark split banner in the reference -->
+<section class="bg-brand-charcoal py-20 border-y border-brand-border/40" data-purpose="precision-banner">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Image preview on left like reference -->
+<div class="reveal-elem lg:col-span-6 relative revealed">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border group">
+<img alt="Completed high precision metalwork project overview" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuDlfg8-WML4rEuV3tIyGj3sL4TaOLI2vGod-QNlt2WNTcPsXpc60bytpE3lDl6AJ3Ie1uCHOVbnye3LbVmm1TLJ8W_s9vZvX7fRrKSU8Zs-6BxdMCpFgVElv0oZg-_vMSH4IEiIOK_zp7s4mwhXln0s12OotSdExnhnxf8z41i6E9ryvIm4mKZRkjxnulJt9PmF0LWMnved4R0Zk75DW_ENWmO2wE2CmL9fAXw">
+<div class="absolute inset-0 bg-gradient-to-tr from-brand-charcoal/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 bg-brand-charcoal/90 border border-brand-accent/30 rounded px-4 py-2 text-xs font-medium text-slate-300">
+<span class="text-brand-accent font-bold">PROJECT HIGHLIGHT:</span> Lake Norman Modern Steel Staircase
+              </div>
+</div>
+</div>
+<!-- Bold Typography on right like reference -->
+<div class="reveal-elem delay-200 lg:col-span-6 lg:pl-6 text-left revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-3">SEE THE DIFFERENCE</p>
+<h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white uppercase leading-[0.95] mb-6">
+              SEVEN DECADES OF PRECISION. <br>
+<span class="text-brand-accent">FORGED FOR GENERATIONS.</span>
+</h2>
+<p class="text-slate-300 text-base leading-relaxed mb-6 font-normal">
+              Unlike mass distributors who ship modular components that rattle and rust, James Iron &amp; Steel measures, welds, and finishes every assembly by hand in our Monroe shop.
+            </p>
+<p class="text-slate-400 text-sm leading-relaxed mb-8">
+              We uphold tight tolerances, weld clean seamless joints, and apply multi-stage finishes built to withstand heavy foot traffic, salt air, and Carolina weather.
+            </p>
+<div>
+<a class="shimmer-button inline-flex items-center px-8 py-4 rounded bg-brand-accent hover:bg-brand-accentHover text-brand-charcoal font-bold font-heading text-base tracking-wider uppercase transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] shadow-lg" href="#estimate-form">
+                Schedule An On-Site Consultation
+              </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: DarkContrastFeatureBanner -->
+<!-- BEGIN: WhyChooseUsBento -->
+<!-- Direct equivalent to reference "WHY COLUMBUS HOMEOWNERS CHOOSE HUGO BUILDERS" with 01, 02, 03 cards -->
+<section class="bg-[#0D0E12] py-24 border-b border-brand-border/40" data-purpose="why-choose-us" id="why-us">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Column: Title + Credentials Badge matching reference layout -->
+<div class="reveal-elem lg:col-span-5 revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">WHY JAMES IRON &amp; STEEL</p>
+<h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white uppercase leading-tight tracking-tight mb-8">
+              WHY BUILDERS &amp; HOMEOWNERS CHOOSE JAMES IRON &amp; STEEL
+            </h2>
+<!-- Reference Certification Card Component -->
+<div class="bg-brand-surface rounded-xl p-6 border border-brand-border shadow-md max-w-sm transform hover:scale-[1.02] transition-transform duration-300">
+<div class="flex items-center space-x-4">
+<div class="w-16 h-16 rounded bg-brand-card flex-shrink-0 flex items-center justify-center border border-brand-accent/40 shadow-inner">
+<span class="font-heading text-2xl font-bold text-brand-accent">1952</span>
+</div>
+<div>
+<h4 class="font-heading text-base font-bold text-white tracking-wide uppercase">CERTIFIED FABRICATORS</h4>
+<p class="text-xs text-slate-400">4th Gen Craftsmanship • NC &amp; SC Licensed • Full Liability &amp; Workers' Comp</p>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3 text-xs text-slate-400">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Direct shop access — communicate directly with your metal fabricator.</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Comprehensive on-site field measurements to guarantee exact tolerances.</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Standard written 1-Year Workmanship Warranty on all fabrications.</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Numbered 01, 02, 03 Cards matching reference -->
+<div class="lg:col-span-7 space-y-5">
+<!-- 01 Card -->
+<div class="reveal-elem delay-100 benefit-card bg-brand-surface border border-brand-border rounded-xl p-6 sm:p-8 flex items-start gap-6 hover:border-brand-accent/50 transition duration-300 revealed">
+<span class="font-heading text-4xl sm:text-5xl font-bold text-brand-accent tracking-tighter flex-shrink-0">01</span>
+<div>
+<h3 class="font-heading text-xl sm:text-2xl font-bold text-white uppercase mb-2">QUALITY CRAFTSMANSHIP</h3>
+<p class="text-slate-300 text-sm leading-relaxed">
+                  Every structural rail, beam, and gate is created with precision, using only certified commercial-grade steel, clean TIG/MIG welding techniques, and architectural finishing that stands the test of time.
+                </p>
+</div>
+</div>
+<!-- 02 Card -->
+<div class="reveal-elem delay-200 benefit-card bg-brand-surface border border-brand-border rounded-xl p-6 sm:p-8 flex items-start gap-6 hover:border-brand-accent/50 transition duration-300 revealed">
+<span class="font-heading text-4xl sm:text-5xl font-bold text-brand-accent tracking-tighter flex-shrink-0">02</span>
+<div>
+<h3 class="font-heading text-xl sm:text-2xl font-bold text-white uppercase mb-2">FREE ESTIMATES &amp; TRANSPARENT PRICING</h3>
+<p class="text-slate-300 text-sm leading-relaxed">
+                  Complimentary project consultations and on-site measurements to accurately assess plans, elevations, and site requirements before fabrication begins. No hidden line-items, no pressure.
+                </p>
+</div>
+</div>
+<!-- 03 Card -->
+<div class="reveal-elem delay-300 benefit-card bg-brand-surface border border-brand-border rounded-xl p-6 sm:p-8 flex items-start gap-6 hover:border-brand-accent/50 transition duration-300 revealed">
+<span class="font-heading text-4xl sm:text-5xl font-bold text-brand-accent tracking-tighter flex-shrink-0">03</span>
+<div>
+<h3 class="font-heading text-xl sm:text-2xl font-bold text-white uppercase mb-2">LOCAL MONROE &amp; CHARLOTTE EXPERTISE</h3>
+<p class="text-slate-300 text-sm leading-relaxed">
+                  Born and built in Monroe, North Carolina. We understand regional building codes, wind loads for coastal properties in Oak Island and Wilmington, and architectural review requirements across Lake Norman and Charlotte.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: WhyChooseUsBento -->
+<!-- BEGIN: RecentProjectsGallery -->
+<!-- Direct equivalent to the RECENT PROJECTS section in the reference with varied photo layout -->
+<section class="bg-brand-stone py-24 text-brand-charcoal" data-purpose="recent-projects" id="projects">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="reveal-elem text-center max-w-2xl mx-auto mb-16 revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">OUR WORK</p>
+<h2 class="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-brand-charcoal uppercase">
+            RECENT PROJECTS
+          </h2>
+<div class="w-16 h-1 bg-brand-accent mx-auto mt-4 mb-4"></div>
+<p class="text-slate-600 text-sm">A sampling of recent custom ironwork and structural steel installations across the Carolinas.</p>
+</div>
+<!-- Asymmetrical Project Grid mirroring reference photo arrangements -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+<!-- Large Top Feature / Left Hero Card (takes 7 cols) -->
+<div class="reveal-elem delay-100 gallery-card md:col-span-7 bg-white rounded-2xl overflow-hidden shadow-md group relative revealed">
+<div class="h-80 sm:h-96 overflow-hidden">
+<img alt="Modern estate exterior featuring architectural iron balcony and railings" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTpPKPIqLmdoj9vRHNllGMdcyfLe8rWiYHp0x1C-iX7LQ_l0ZZuEUYglmMP9uSTReRSVDKFNkvNd3QVnccwvLJ2j-05csjjk-xURsg1cAe6pS89R09FGM2bwff-Ih4ookBBS_kpaKjFljdPC1TC-PVG5MI0fgFuFbj4pEdUmv0eJ8yrOc9uMjEfacCQoCiZNCcX8F_AK4w-9ptVhnzZvbpHchEoC2VhvHPkRCLrQ">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-heading text-xl font-bold text-brand-charcoal uppercase">LAKE NORMAN WATERFRONT ESTATE</h3>
+<p class="text-xs text-slate-500">Multi-Level Exterior Black Powder-Coated Guardrail &amp; Gate</p>
+</div>
+<span class="text-xs font-bold text-brand-accent uppercase tracking-wider">Cornelius, NC</span>
+</div>
+</div>
+</div>
+<!-- Right Tall Feature (takes 5 cols) -->
+<div class="reveal-elem delay-200 gallery-card md:col-span-5 bg-white rounded-2xl overflow-hidden shadow-md group relative revealed">
+<div class="h-80 sm:h-96 overflow-hidden">
+<img alt="Custom architectural iron gate for luxury private residence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8gupjY7Ee01zuan4j24aX2Es1mE5U1ZyA5Tppf3mGeHMYaTcNbzzkxv77KWMGZ_FkMc9__Wv7Je6vMxyYXWmX0OKm58r4YD58ZiSUUDGEVb3OOO4QCjYmUTe6lsUS3NXBOWCwQO9yd_qVB5UahzmijUC2x3StJjMQHv0gR5Kz_0AP_7oP-3pzeqacO29V8grM9s48_y14fM5TKYIhkvYHT9F-frbQHTjQg8FFgA">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-heading text-xl font-bold text-brand-charcoal uppercase">CHARLOTTE HISTORIC ENTRY GATE</h3>
+<p class="text-xs text-slate-500">Custom Forged Wrought-Iron Double Swing Vehicle Gate</p>
+</div>
+<span class="text-xs font-bold text-brand-accent uppercase tracking-wider">Myers Park, NC</span>
+</div>
+</div>
+</div>
+<!-- Bottom Row 3 Grid items -->
+<div class="reveal-elem delay-100 gallery-card md:col-span-4 bg-white rounded-2xl overflow-hidden shadow-md group revealed">
+<div class="h-64 overflow-hidden">
+<img alt="Commercial structural steel staircase installation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJMpCoIX5t0uUrHduUWh8gov8AGKelK0oiuh0MyCe53cq9cnHs4NdUZhaYhpzI4C1-tZJCVcSS-rkm9_5bASHnAcyZHS12uh7EuONgJ7TMW6-dtiAhX-S-utHUPIgHZ0PfaX25ObSo0LAu8TYUgAahVh4_Q51MUbUd_b7TnFJkR0mUlMkIPsihk56gwjMTajQXClq5fV_TSVSRslMPD_NfXdbcTC3Qs1rka6IgCg">
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-brand-charcoal uppercase">COMMERCIAL MEZZANINE &amp; STAIR</h3>
+<p class="text-xs text-slate-500">Industrial Facility Structural Package • Monroe, NC</p>
+</div>
+</div>
+<div class="reveal-elem delay-200 gallery-card md:col-span-4 bg-white rounded-2xl overflow-hidden shadow-md group revealed">
+<div class="h-64 overflow-hidden">
+<img alt="Precision interior metal staircase and floating steps" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzEAqOx4nZe0bUCskN55_VW7F-RKGhlag3adxBByxVYlWpDyj2mpp9QFRP-y7ANh5G88JdqzaZpLjQqNeM0sJ3ARCSKWOe2-_0HXoUh3Gtz8EkqS-c-EnPTIswv_F1n8H_WZx1cJHI8ZMpyosU1RxrXpU2vZfc0NG_t30OCyUpvtEJZe3cyDKWCjgwQVYfZNF7vwATp6kfV0ZEKDFRd0nVo9ZaCKtXTum_YKvL-g">
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-brand-charcoal uppercase">MONO-STRINGER INTERIOR STAIR</h3>
+<p class="text-xs text-slate-500">Custom Residence Floating Stair &amp; Handrail • SouthPark, NC</p>
+</div>
+</div>
+<div class="reveal-elem delay-300 gallery-card md:col-span-4 bg-white rounded-2xl overflow-hidden shadow-md group revealed">
+<div class="h-64 overflow-hidden">
+<img alt="Decorative Bahama shutters and balcony accents" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoDUeXk6KqexOvatX2hyL0P1ZKoRYRdZ0pygjnX2OPGiw2G1zb_cyDUNdjKubnsx5SqiaaGv6Px5qGfe-dpr6V52cEjDjs6_fXWKJMTRp4tmmfvWW728V7MSuxzqOi0cxUTvbtk0lJquTpkKnUHzdMF-tOcjyAxH2ReQ7l80luZ-P_40QVnLi9UU4VvBqU7Ww63I-K_ByUTTctBeH8LsuZ0diUKzqha7MYSon4bQ">
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-brand-charcoal uppercase">COASTAL ALUMINUM BAHAMA SHUTTERS</h3>
+<p class="text-xs text-slate-500">Powder-Coated Coastal Exterior Package • Oak Island, NC</p>
+</div>
+</div>
+</div>
+<div class="reveal-elem mt-12 text-center revealed">
+<a class="shimmer-button inline-flex items-center px-8 py-3.5 bg-brand-charcoal hover:bg-black text-brand-accent rounded font-bold font-heading text-sm tracking-wider uppercase transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] shadow-md" href="#estimate-form">
+            Discuss Your Custom Project With Our Craftsmen →
+          </a>
+</div>
+</div>
+</section>
+<!-- END: RecentProjectsGallery -->
+<!-- BEGIN: TestimonialsSection -->
+<!-- Direct equivalent to the "TRUSTED BY COLUMBUS HOMEOWNERS" review cards with 5 gold stars in the reference -->
+<section class="bg-white py-24 text-brand-charcoal border-b border-slate-200" data-purpose="client-reviews" id="reviews">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="reveal-elem text-center max-w-2xl mx-auto mb-16 revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">WHAT OUR CLIENTS SAY</p>
+<h2 class="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-brand-charcoal uppercase">
+            TRUSTED ACROSS THE CAROLINAS
+          </h2>
+<div class="w-16 h-1 bg-brand-accent mx-auto mt-4 mb-4"></div>
+<p class="text-slate-600 text-sm">Read unvarnished feedback from local general contractors, custom home builders, and estate owners.</p>
+</div>
+<!-- 3-Column Reviews Card Grid directly replicating the reference -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review 1 -->
+<article class="reveal-elem delay-100 bg-[#FAF9F6] p-8 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between transform hover:-translate-y-1 transition duration-300 revealed">
+<div>
+<!-- 5 Stars matching reference -->
+<div class="flex items-center space-x-1 text-amber-500 mb-5">
+<span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span>
+</div>
+<p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                "James Iron &amp; Steel exceeded all expectations! From start to finish, the crew was professional, communicative, and incredibly skilled. They built and installed our custom driveway gate and exterior railings quickly and with surgical precision. The quality of work is outstanding. You can tell they take pride in what they do. Highly recommend them to anyone looking for reliable, top-notch metalwork!"
+              </p>
+</div>
+<div class="border-t border-slate-200 pt-4">
+<p class="font-heading font-bold text-base text-brand-charcoal uppercase">Marcus Vance</p>
+<p class="text-xs text-slate-500">Custom Home Builder, Lake Norman • Google Review</p>
+</div>
+</article>
+<!-- Review 2 -->
+<article class="reveal-elem delay-200 bg-[#FAF9F6] p-8 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between transform hover:-translate-y-1 transition duration-300 revealed">
+<div>
+<div class="flex items-center space-x-1 text-amber-500 mb-5">
+<span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span>
+</div>
+<p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                "These guys are simply the best. Got the work done on schedule and treated me with total respect. Our commercial stair tower passed building inspection on the first run without a single modification requested. Fair pricing, no excuses, just honest Carolina craftsmanship."
+              </p>
+</div>
+<div class="border-t border-slate-200 pt-4">
+<p class="font-heading font-bold text-base text-brand-charcoal uppercase">Robert Nielsen</p>
+<p class="text-xs text-slate-500">Commercial Superintendent, Charlotte • Verified Client</p>
+</div>
+</article>
+<!-- Review 3 -->
+<article class="reveal-elem delay-300 bg-[#FAF9F6] p-8 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between transform hover:-translate-y-1 transition duration-300 revealed">
+<div>
+<div class="flex items-center space-x-1 text-amber-500 mb-5">
+<span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span><span class="">★</span>
+</div>
+<p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                "James Iron &amp; Steel came out and did an absolutely incredible job on our interior floating mono-stringer staircase. The turnaround time was fast, the powder coat finish was immaculate, and the crew left our home spotless after installation. I highly recommend James Iron &amp; Steel for any kind of architectural fabrication project."
+              </p>
+</div>
+<div class="border-t border-slate-200 pt-4">
+<p class="font-heading font-bold text-base text-brand-charcoal uppercase">Dr. John &amp; Ellen Shepard</p>
+<p class="text-xs text-slate-500">Residential Client, Waxhaw, NC • Google Review</p>
+</div>
+</article>
+</div>
+<!-- Reference-style "Read All Google Reviews" centered pill button -->
+<div class="reveal-elem mt-12 text-center revealed">
+<a class="inline-flex items-center space-x-2 px-6 py-3 border border-slate-300 rounded-full text-xs font-bold uppercase tracking-wider text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-all duration-200 transform hover:scale-[1.02] shadow-sm" href="#reviews">
+<svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"></path>
+</svg>
+<span class="">Read All Google Reviews (5.0 Stars)</span>
+</a>
+</div>
+</div>
+</section>
+<!-- END: TestimonialsSection -->
+<!-- BEGIN: SeeUsInActionReels -->
+<!-- Direct equivalent to the "SEE US IN ACTION" 2-phone video layout in the reference image -->
+<section class="bg-brand-charcoal py-24 text-white" data-purpose="social-reels" id="in-action">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="reveal-elem text-center max-w-2xl mx-auto mb-16 revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">FOLLOW US</p>
+<h2 class="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-white uppercase">
+            SEE US IN ACTION
+          </h2>
+<div class="w-16 h-1 bg-brand-accent mx-auto mt-4 mb-4"></div>
+<p class="text-slate-400 text-sm">Follow along on social media for behind-the-scenes looks at our latest custom metal fabrication and installation projects.</p>
+</div>
+<!-- 2 Vertical Phone Mockup Cards matching reference -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+<!-- Phone Card 1 -->
+<div class="reveal-elem delay-100 bg-brand-surface rounded-3xl p-3 border-2 border-brand-border shadow-2xl relative group overflow-hidden hover:border-brand-accent/60 transition-colors duration-300 revealed">
+<div class="relative rounded-2xl overflow-hidden aspect-reel bg-black">
+<img alt="Ironworker welding stairs in workshop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqzTkw94YQMhtEUr5_1NbRq6mkpwYre_Rq_5hsLCnYyKPm1zljGD-vAecahaZ-HWZye6pChoZ2lq99qU4_qpTZdKF2lOzxGqs9E3E13Kraygj1Uw5RJNuyam7QU-7LMVRihPrEysTGhzpSdNyZIc4iF53CK_3QhKTSAdGzqbjFyUvD096GDF_PugsIyhE_UuVAxJrRq2WDEH0R8Z9b8nT6beeHojqq0y9nvpB9NA">
+<!-- Video reel overlay badges matching reference style -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-5">
+<div class="flex justify-between items-center text-xs text-white">
+<span class="bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-[11px] font-semibold text-brand-accent">@jamesironsteel</span>
+<span class="text-white/80">Reel • 0:45</span>
+</div>
+<div>
+<span class="inline-block bg-brand-accent text-brand-charcoal font-bold text-[10px] uppercase px-2 py-0.5 rounded mb-2">Monroe Shop</span>
+<h4 class="font-heading text-lg font-bold text-white uppercase leading-tight mb-2">TIG WELDING ARCHITECTURAL RAILS</h4>
+<p class="text-xs text-slate-300">Clean seams and precise heat control before multi-stage coating.</p>
+</div>
+</div>
+<!-- Center Play Icon -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-14 h-14 rounded-full bg-brand-accent/80 flex items-center justify-center text-brand-charcoal shadow-lg transform group-hover:scale-110 transition duration-300">
+<svg class="w-6 h-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Phone Card 2 -->
+<div class="reveal-elem delay-200 bg-brand-surface rounded-3xl p-3 border-2 border-brand-border shadow-2xl relative group overflow-hidden hover:border-brand-accent/60 transition-colors duration-300 revealed">
+<div class="relative rounded-2xl overflow-hidden aspect-reel bg-black">
+<img alt="On-site installation crew putting iron gate in place" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_QgpWVTbs3AXc42vydqrm_rp9bNAwv90wAKnBi0zwYfi1TrfOhSyGh3Mk6Sb-U0siEc9jl2y4hMuhOsPaB7zoV6U31W1MdQARCET3PukMBKQhbKmCMEnL5UPV0DqE4K-atQKRJfqSD_6w47NiEOfsGXzVs-wxnEMAQXmkYdzXHUagwVjHWj0B5BzPvR09lNsUwBvwthDEvOO02kW_uB-1M8x69G-gbAxKWrLthQ">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-5">
+<div class="flex justify-between items-center text-xs text-white">
+<span class="bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-[11px] font-semibold text-brand-accent">@jamesironsteel</span>
+<span class="text-white/80">Reel • 1:12</span>
+</div>
+<div>
+<span class="inline-block bg-brand-accent text-brand-charcoal font-bold text-[10px] uppercase px-2 py-0.5 rounded mb-2">Field Install</span>
+<h4 class="font-heading text-lg font-bold text-white uppercase leading-tight mb-2">CRANE HOISTING 18FT ESTATE GATE</h4>
+<p class="text-xs text-slate-300">Final millimeter alignment on custom motorized pivots.</p>
+</div>
+</div>
+<!-- Center Play Icon -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-14 h-14 rounded-full bg-brand-accent/80 flex items-center justify-center text-brand-charcoal shadow-lg transform group-hover:scale-110 transition duration-300">
+<svg class="w-6 h-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Social Buttons matching reference -->
+<div class="reveal-elem mt-12 flex justify-center items-center gap-4 revealed">
+<a class="inline-flex items-center gap-2 bg-brand-surface hover:bg-brand-card text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full border border-brand-border transition-all duration-200 transform hover:scale-105" href="#">
+<svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+            Facebook
+          </a>
+<a class="inline-flex items-center gap-2 bg-brand-surface hover:bg-brand-card text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full border border-brand-border transition-all duration-200 transform hover:scale-105" href="#">
+<svg class="w-4 h-4 text-pink-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+            Instagram
+          </a>
+</div>
+</div>
+</section>
+<!-- END: SeeUsInActionReels -->
+<!-- BEGIN: ServiceAreaSummary -->
+<!-- Direct equivalent to "WHERE WE WORK / ROOFING, GUTTERS AROUND COLUMBUS" section in reference -->
+<section class="bg-brand-stone py-20 text-brand-charcoal border-t border-slate-200" data-purpose="service-area">
+<div class="reveal-elem max-w-4xl mx-auto px-4 text-center revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">WHERE WE WORK</p>
+<h2 class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-brand-charcoal uppercase mb-6">
+          ARCHITECTURAL IRON &amp; STRUCTURAL STEEL ACROSS THE CAROLINAS
+        </h2>
+<div class="w-16 h-1 bg-brand-accent mx-auto mb-6"></div>
+<p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+          James Iron &amp; Steel, Inc. is headquartered in Monroe, North Carolina, and fabricates custom metalwork for property owners and general contractors across North and South Carolina. Custom structural beams, ornamental gates, railings, and specialty finishes are delivered and installed across Charlotte, Lake Norman, Lake Wylie, Waxhaw, Matthews, Concord, Fort Mill, and coastal communities including Wilmington and Oak Island. Call <a class="font-bold text-brand-charcoal underline hover:text-brand-accent" href="tel:7043098507">(704) 309-8507</a> to discuss your plans or arrange a complimentary site assessment.
+        </p>
+<!-- Coverage Pills -->
+<div class="flex flex-wrap justify-center gap-2 text-xs font-semibold text-slate-700">
+<span class="bg-white border border-slate-200 px-3.5 py-1.5 rounded-full hover:border-brand-accent transition-colors duration-200">Monroe (HQ)</span>
+<span class="bg-white border border-slate-200 px-3.5 py-1.5 rounded-full hover:border-brand-accent transition-colors duration-200">Charlotte &amp; SouthPark</span>
+<span class="bg-white border border-slate-200 px-3.5 py-1.5 rounded-full hover:border-brand-accent transition-colors duration-200">Lake Norman &amp; Cornelius</span>
+<span class="bg-white border border-slate-200 px-3.5 py-1.5 rounded-full hover:border-brand-accent transition-colors duration-200">Waxhaw &amp; Union County</span>
+<span class="bg-white border border-slate-200 px-3.5 py-1.5 rounded-full hover:border-brand-accent transition-colors duration-200">Lake Wylie &amp; Fort Mill, SC</span>
+<span class="bg-white border border-slate-200 px-3.5 py-1.5 rounded-full hover:border-brand-accent transition-colors duration-200">Oak Island &amp; Wilmington</span>
+</div>
+</div>
+</section>
+<!-- END: ServiceAreaSummary -->
+<!-- BEGIN: FAQSection -->
+<!-- Direct equivalent to the "FREQUENTLY ASKED QUESTIONS" clean accordion section in the reference -->
+<section class="bg-white py-24 text-brand-charcoal" data-purpose="faq" id="faq">
+<div class="max-w-4xl mx-auto px-4 sm:px-6">
+<div class="reveal-elem text-center mb-16 revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">FAQ</p>
+<h2 class="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-brand-charcoal uppercase">
+            FREQUENTLY ASKED QUESTIONS
+          </h2>
+<div class="w-16 h-1 bg-brand-accent mx-auto mt-4 mb-4"></div>
+</div>
+<!-- Clean Accordion List matching reference lines and plus icons -->
+<div class="divide-y divide-slate-200 border-y border-slate-200 text-left">
+<!-- FAQ 1 -->
+<details class="reveal-elem group py-6 transition duration-200 revealed" open="">
+<summary class="flex justify-between items-center cursor-pointer list-none select-none">
+<span class="font-heading text-lg sm:text-xl font-bold text-brand-charcoal uppercase group-hover:text-brand-accent transition-colors duration-200">
+                Do you provide free on-site estimates?
+              </span>
+<span class="text-brand-accent font-bold text-2xl group-open:rotate-45 transition-transform duration-300">
+                +
+              </span>
+</summary>
+<div class="mt-4 text-slate-600 text-sm leading-relaxed pr-8">
+              Yes, complimentary estimates are standard at James Iron &amp; Steel. We can evaluate your architectural drawings, sketches, or come directly to your job site in Charlotte, Monroe, or the surrounding region to take exact laser measurements and discuss material specs.
+            </div>
+</details>
+<!-- FAQ 2 -->
+<details class="reveal-elem delay-100 group py-6 transition duration-200 revealed">
+<summary class="flex justify-between items-center cursor-pointer list-none select-none">
+<span class="font-heading text-lg sm:text-xl font-bold text-brand-charcoal uppercase group-hover:text-brand-accent transition-colors duration-200">
+                What is your typical turnaround time for fabrication?
+              </span>
+<span class="text-brand-accent font-bold text-2xl group-open:rotate-45 transition-transform duration-300">
+                +
+              </span>
+</summary>
+<div class="mt-4 text-slate-600 text-sm leading-relaxed pr-8">
+              Lead times vary depending on project complexity. Standard residential railings and gates typically require 2 to 3 weeks from approved shop drawings to final install. Large structural packages or custom powder-coated automated entry gates are scheduled according to contractor milestones.
+            </div>
+</details>
+<!-- FAQ 3 -->
+<details class="reveal-elem delay-200 group py-6 transition duration-200 revealed">
+<summary class="flex justify-between items-center cursor-pointer list-none select-none">
+<span class="font-heading text-lg sm:text-xl font-bold text-brand-charcoal uppercase group-hover:text-brand-accent transition-colors duration-200">
+                Do you handle both commercial and residential projects?
+              </span>
+<span class="text-brand-accent font-bold text-2xl group-open:rotate-45 transition-transform duration-300">
+                +
+              </span>
+</summary>
+<div class="mt-4 text-slate-600 text-sm leading-relaxed pr-8">
+              Yes. We have dedicated teams for both. Our commercial division fabricates structural steel beams, fire escape stairs, and ADA railings, while our residential team focuses on high-finish interior handrails, drive gates, and decorative accents.
+            </div>
+</details>
+<!-- FAQ 4 -->
+<details class="reveal-elem delay-300 group py-6 transition duration-200 revealed">
+<summary class="flex justify-between items-center cursor-pointer list-none select-none">
+<span class="font-heading text-lg sm:text-xl font-bold text-brand-charcoal uppercase group-hover:text-brand-accent transition-colors duration-200">
+                What warranties do you provide on your metalwork?
+              </span>
+<span class="text-brand-accent font-bold text-2xl group-open:rotate-45 transition-transform duration-300">
+                +
+              </span>
+</summary>
+<div class="mt-4 text-slate-600 text-sm leading-relaxed pr-8">
+              We stand behind every weld with a written 1-Year Workmanship Warranty. Additionally, our architectural powder-coat finishes feature manufacturer warranties against chalking, chipping, and peeling.
+            </div>
+</details>
+<!-- FAQ 5 -->
+<details class="reveal-elem delay-400 group py-6 transition duration-200 revealed">
+<summary class="flex justify-between items-center cursor-pointer list-none select-none">
+<span class="font-heading text-lg sm:text-xl font-bold text-brand-charcoal uppercase group-hover:text-brand-accent transition-colors duration-200">
+                Can you match existing architectural iron designs or sketches?
+              </span>
+<span class="text-brand-accent font-bold text-2xl group-open:rotate-45 transition-transform duration-300">
+                +
+              </span>
+</summary>
+<div class="mt-4 text-slate-600 text-sm leading-relaxed pr-8">
+              Absolutely. Our craftsmen have 70+ years of collective lineage replicating historical wrought iron, matching existing balustrades, or building modern minimalist profiles from architect CAD files and Pinterest inspiration photos.
+            </div>
+</details>
+<!-- FAQ 6 -->
+<details class="reveal-elem delay-500 group py-6 transition duration-200 revealed">
+<summary class="flex justify-between items-center cursor-pointer list-none select-none">
+<span class="font-heading text-lg sm:text-xl font-bold text-brand-charcoal uppercase group-hover:text-brand-accent transition-colors duration-200">
+                How durable is the finish against rust in coastal areas?
+              </span>
+<span class="text-brand-accent font-bold text-2xl group-open:rotate-45 transition-transform duration-300">
+                +
+              </span>
+</summary>
+<div class="mt-4 text-slate-600 text-sm leading-relaxed pr-8">
+              For coastal jobs in Oak Island, Wilmington, or high-humidity lakefronts, we utilize hot-dip galvanization or marine-grade aluminum coupled with multi-coat electrostatic powder coating to ensure lifetime rust inhibition.
+            </div>
+</details>
+</div>
+</div>
+</section>
+<!-- END: FAQSection -->
+<!-- BEGIN: ContactEstimateSection -->
+<!-- Direct equivalent to the high-converting "READY TO PROTECT YOUR HOME?" dark contact form in the reference -->
+<section class="bg-brand-charcoal py-24 text-white border-t border-brand-border" data-purpose="contact-form" id="estimate-form">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column Content matching reference -->
+<div class="reveal-elem lg:col-span-6 revealed">
+<p class="badge-heading text-xs font-bold text-brand-accent tracking-widestPlus uppercase mb-2">GET STARTED</p>
+<h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white uppercase leading-none tracking-tight mb-6">
+              READY TO FORGE <br>
+<span class="text-brand-accent">SOMETHING EXCEPTIONAL?</span>
+</h2>
+<p class="text-slate-300 text-base leading-relaxed mb-8 max-w-lg">
+              Whether you need structural steel for a commercial development, a custom driveway gate, or luxury interior stair railings, our Monroe fabrication team is ready to assist. Request your complimentary consultation today.
+            </p>
+<!-- Phone Callout matching reference style -->
+<div class="space-y-4">
+<a class="inline-flex items-center space-x-3 text-2xl sm:text-3xl font-heading font-bold text-white hover:text-brand-accent transition duration-200 group" href="tel:7043098507">
+<span class="w-12 h-12 rounded-full bg-brand-surface border border-brand-accent/40 flex items-center justify-center text-brand-accent group-hover:scale-110 group-hover:border-brand-accent transition-transform duration-200">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+<span class="">(704) 309-8507</span>
+</a>
+<div class="text-xs text-slate-400 space-y-1 pl-15">
+<p class=""><span class="text-slate-200 font-semibold">Direct Text Inquiries:</span> (704) 207-6226</p>
+<p class=""><span class="text-slate-200 font-semibold">Shop Operating Hours:</span> Mon–Thu: 7:00 AM – 4:00 PM | Fri: 6:00 AM – 3:00 PM</p>
+<p class=""><span class="text-slate-200 font-semibold">Monroe Facility:</span> 2819 Tophill Rd, Monroe, NC 28110</p>
+</div>
+</div>
+</div>
+<!-- Right Column White Card Form matching reference exact card layout -->
+<div class="reveal-elem delay-200 lg:col-span-6 revealed">
+<div class="bg-white rounded-2xl p-8 sm:p-10 shadow-2xl text-brand-charcoal">
+<form class="space-y-4" data-purpose="estimate-request-form" onsubmit="event.preventDefault(); alert('Thank you! Your estimate request has been submitted. A James Iron &amp; Steel specialist will contact you shortly.');">
+<div>
+<label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="name">Name *</label>
+<input class="w-full text-sm rounded border border-slate-300 px-3.5 py-2.5 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent" id="name" placeholder="Your full name" required="" type="text">
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="email">Email *</label>
+<input class="w-full text-sm rounded border border-slate-300 px-3.5 py-2.5 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent" id="email" placeholder="you@example.com" required="" type="email">
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="phone">Phone *</label>
+<input class="w-full text-sm rounded border border-slate-300 px-3.5 py-2.5 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent" id="phone" placeholder="(704) 000-0000" required="" type="tel">
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="service-interest">Service Interest *</label>
+<select class="w-full text-sm rounded border border-slate-300 px-3.5 py-2.5 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent bg-white" id="service-interest" required="">
+<option disabled="" selected="" value="">Select a service...</option>
+<option value="commercial-steel">Commercial Structural Steel &amp; Erection</option>
+<option value="commercial-stairs">Commercial Stairs &amp; ADA Railings</option>
+<option value="residential-railings">Residential Interior/Exterior Railings</option>
+<option value="driveway-gates">Ornamental Driveway &amp; Courtyard Gates</option>
+<option value="bahama-shutters">Bahama Shutters &amp; Custom Accents</option>
+<option value="powder-coating">Powder Coating &amp; Custom Restoration</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="message">Message / Project Details</label>
+<textarea class="w-full text-sm rounded border border-slate-300 px-3.5 py-2.5 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent" id="message" placeholder="Tell us about your project dimensions, timeline, or site address..." rows="3"></textarea>
+</div>
+<!-- Submit Button matching reference black full-width pill -->
+<button class="shimmer-button w-full py-3.5 px-6 rounded bg-brand-charcoal hover:bg-black text-brand-accent font-heading font-bold text-base tracking-wider uppercase transition-all duration-200 transform hover:scale-[1.01] shadow-lg mt-2" type="submit">
+                  Send Message &amp; Get Free Estimate
+                </button>
+<p class="text-[11px] text-center text-slate-400 mt-2">
+                  🔒 We respect your privacy. No spam. Typical response time is under 4 business hours.
+                </p>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ContactEstimateSection -->
+</main>
+<!-- BEGIN: MainFooter -->
+<!-- Replicating the clean architectural layout of the reference footer -->
+<footer class="bg-[#07080A] text-slate-400 text-xs border-t border-brand-border/60 pt-16 pb-12" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-brand-border/60">
+<!-- Col 1: Logo & Heritage Badge (4 cols) -->
+<div class="lg:col-span-4">
+<div class="flex items-center space-x-3 mb-4">
+<div class="w-10 h-10 bg-brand-accent rounded border border-brand-accent/30 flex items-center justify-center font-heading font-bold text-brand-charcoal text-lg">
+              JIS
+            </div>
+<div>
+<span class="font-heading text-lg text-white font-bold tracking-wider block">JAMES IRON &amp; STEEL</span>
+<span class="text-[10px] text-brand-accent uppercase tracking-widest block">Est. 1952 • Monroe, NC</span>
+</div>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed mb-6">
+            Fourth-generation custom iron and steel fabricator serving Charlotte, Lake Norman, Union County, and statewide North &amp; South Carolina with premier architectural craftsmanship.
+          </p>
+<div class="inline-flex items-center space-x-2 bg-brand-surface border border-brand-border px-3 py-1.5 rounded text-[11px] text-slate-300">
+<span class="text-brand-accent">★</span>
+<span class="">AISC Certified Standards • 1-Year Workmanship Warranty</span>
+</div>
+</div>
+<!-- Col 2: Quick Links (2 cols) -->
+<div class="lg:col-span-2">
+<h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider mb-4">QUICK LINKS</h4>
+<ul class="space-y-2.5">
+<li class=""><a class="hover:text-brand-accent transition" href="#">Home</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#services">Capabilities</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#why-us">Our Heritage</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#projects">Selected Projects</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#reviews">Reviews</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#faq">FAQ</a></li>
+</ul>
+</div>
+<!-- Col 3: Services (3 cols) -->
+<div class="lg:col-span-3">
+<h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider mb-4">SERVICES</h4>
+<ul class="space-y-2.5">
+<li class=""><a class="hover:text-brand-accent transition" href="#services">Commercial Structural Steel</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#services">Commercial Stair Towers &amp; Rails</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#services">Custom Residential Railings</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#services">Driveway &amp; Estate Entry Gates</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#services">Bahama Aluminum Shutters</a></li>
+<li class=""><a class="hover:text-brand-accent transition" href="#services">Industrial Powder Coating</a></li>
+</ul>
+</div>
+<!-- Col 4: Contact & Workshop Info (3 cols) -->
+<div class="lg:col-span-3">
+<h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider mb-4">CONTACT &amp; SHOP</h4>
+<address class="not-italic space-y-2.5 text-xs text-slate-400">
+<p class="flex items-start gap-2">
+<svg class="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">2819 Tophill Rd<br>Monroe, NC 28110</span>
+</p>
+<p class="flex items-center gap-2">
+<svg class="w-4 h-4 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<a class="hover:text-white font-semibold" href="tel:7043098507">(704) 309-8507</a>
+</p>
+<p class="flex items-center gap-2">
+<svg class="w-4 h-4 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Text: (704) 207-6226</span>
+</p>
+</address>
+</div>
+</div>
+<!-- Bottom Bar matching reference copyright & badge -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+<p class="">© 1952–2025 James Iron &amp; Steel, Inc. All rights reserved. Built to last. Crafted to stand apart.</p>
+<div class="flex items-center space-x-6">
+<a class="hover:text-slate-300" href="#">Privacy Policy</a>
+<a class="hover:text-slate-300" href="#">Terms of Service</a>
+<span class="text-slate-600">Monroe, NC • Charlotte Metro</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- Interactive Script for Animations, Scroll Reveals, & FAQ Behavior -->
+<script data-purpose="site-interactions">
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Preloader dismissal and Hero Entrance
+    const preloader = document.getElementById('preloader');
+    const progressBar = document.getElementById('preloader-progress');
+    const heroSection = document.getElementById('hero-section');
+
+    if (progressBar) {
+      setTimeout(() => {
+        progressBar.style.transform = 'scaleX(1)';
+      }, 50);
+    }
+
+    setTimeout(() => {
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 700);
+      }
+      if (heroSection) {
+        heroSection.classList.add('hero-bg-loaded');
+      }
+    }, 950);
+
+    // 2. Scroll Reveal with IntersectionObserver
+    const revealElements = document.querySelectorAll('.reveal-elem');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      // Fallback for browsers without IntersectionObserver
+      revealElements.forEach(el => el.classList.add('revealed'));
+    }
+
+    // 3. Header Frosted Shadow on Scroll
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.classList.add('shadow-2xl', 'border-brand-border');
+        header.classList.remove('border-brand-border/80');
+      } else {
+        header.classList.remove('shadow-2xl');
+      }
+    }, { passive: true });
+
+    // 4. FAQ Accordion Single Open Behavior
+    document.querySelectorAll("details").forEach((detail) => {
+      detail.addEventListener("toggle", (e) => {
+        if (detail.open) {
+          document.querySelectorAll("details").forEach((otherDetail) => {
+            if (otherDetail !== detail) {
+              otherDetail.removeAttribute("open");
+            }
+          });
+        }
+      });
+    });
+  });
+</script>
+
+
+</body></html>
